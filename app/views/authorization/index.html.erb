@@ -1,2 +1,17 @@
-<h1>Authorization#index</h1>
-<p>Find me in app/views/authorization/index.html.erb</p>
+<% provide(:title, 'Home') %>
+
+<h1>Страница Авторизации</h1>
+<p>
+  <form name="user_data" method="post">
+    <p><b>Ваше имя:</b><br>
+      <input type="text" size="40" name="userName">
+    </p>
+    <p><b>Ваш пароль</b><br>
+      <input type="password" size="40" name="userPassword">
+    </p>
+    <p>
+      <input type="submit" value="Войти">
+      <input type="reset" value="Очистить">
+    </p>
+  </form>
+</p>
