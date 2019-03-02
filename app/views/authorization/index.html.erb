@@ -1,8 +1,10 @@
 <% provide(:title, 'Home') %>
 
+
 <h1>Страница Авторизации</h1>
 <p>
-  <form name="user_data" method="post">
+  <%= form_tag({:action => 'logon'},{name: 'b_form', id: 'main_login'}) do -%>
+
     <p><b>Ваше имя:</b><br>
       <input type="text" size="40" name="userName">
     </p>
@@ -13,6 +15,5 @@
       <input type="submit" value="Войти">
       <input type="reset" value="Очистить">
     </p>
-  </form>
+  <%end%>
 </p>
-http://rusrails.ru/active-record-query-interface#pure-string-conditions
