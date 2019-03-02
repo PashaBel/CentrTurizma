@@ -5,15 +5,12 @@
 <p>
   <%= form_tag({:action => 'logon'},{name: 'b_form', id: 'main_login'}) do -%>
 
-    <p><b>Ваше имя:</b><br>
-      <input type="text" size="40" name="userName">
-    </p>
-    <p><b>Ваш пароль</b><br>
-      <input type="password" size="40" name="userPassword">
-    </p>
-    <p>
-      <input type="submit" value="Войти">
-      <input type="reset" value="Очистить">
-    </p>
+      <p><%= label_tag(:userName, "Ваше имя") %><br>
+      <%= text_field_tag(:userName) %></p>
+
+      <p><%= label_tag(:userPassword, "Ваш пароль") %><br>
+      <%= password_field_tag(:userPassword) %></p>
+
+      <p><%= submit_tag("Войти") %></p>
   <%end%>
 </p>
