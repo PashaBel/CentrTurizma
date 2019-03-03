@@ -3,7 +3,7 @@
 
 <h1>Страница Авторизации</h1>
 <p>
-  <%= form_tag({:action => 'logon'},{name: 'b_form', id: 'main_login'}) do -%>
+  <%= form_tag({:action => 'logon'},{name: 'login_form', id: 'login_form'}) do -%>
 
       <p><%= label_tag(:userName, "Ваше имя") %><br>
       <%= text_field_tag(:userName) %></p>
