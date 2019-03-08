@@ -1,4 +1,4 @@
 class Route < ApplicationRecord
-  has_one :trip
+  belongs_to :trip
   has_many :points
 end
