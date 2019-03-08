@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_one :user_type
+  belongs_to :user_type
 end
