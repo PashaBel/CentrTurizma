@@ -1,7 +1,10 @@
 class UserController < ApplicationController
 
   def index
-    current_user.is_admin?
+   if current_user.is_admin?
+   else
+     redirect_to :controller => 'home', :action => 'index'
+   end
   end
 
   def create
