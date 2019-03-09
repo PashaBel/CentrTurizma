@@ -1,14 +1,10 @@
 class UserController < ApplicationController
 
   def index
-
+    current_user.is_admin?
   end
 
   def create
-
-  end
-
-  def list
 
   end
 
