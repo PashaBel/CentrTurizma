@@ -3,9 +3,10 @@
 
 <h1>Список всех зарегистрированных пользователей</h1>
 <p>
-<%=
-  User.find_each do |user|
-      puts (user.user_name ' | ' user.user_password ' | ' user.user_type_id ' | ' user.created_at)
-    end
-%>
+  <table>
+  <% @user.each do |usr|%>
+
+  <%end%>
+  </table>
+
 </p>
