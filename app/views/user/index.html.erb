@@ -4,9 +4,24 @@
 <h1>Список всех зарегистрированных пользователей</h1>
 <p>
   <table>
-  <% @user.each do |usr|%>
-
-  <%end%>
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>User Password</th>
+        <th>User Type</th>
+        <th>Create Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.each do |usr|%>
+        <tr>
+          <td><%= usr.user_name %></td>
+          <td><%= usr.user_password.to_s %></td>
+          <td><%= usr.user_type_id.to_s %></td>
+          <td><%= usr.created_at.to_s %></td>
+        </tr>
+      <%end%>
+    </tbody>
   </table>
 
 </p>
