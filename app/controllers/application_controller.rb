@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
         User.find_by(id: session[:current_user_id])
   end
 
-  # проверяем залогинан ли пользователь и не разрешаем ему никаких действий без авторизации
+  # проверяем авторизован ли пользователь и не разрешаем ему никаких действий без авторизации отправляя его на страницу авторизации
   def require_login
     unless current_user
       flash[:error] = "You must be logged in to access this section"
