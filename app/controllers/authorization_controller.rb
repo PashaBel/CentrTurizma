@@ -8,7 +8,7 @@ class AuthorizationController < ApplicationController
     if user
       session[:current_user_id] = user.id
       session[:UserName] = user.user_name
-      redirect_to home/index
+      redirect_to :controller => 'home', :action => 'index'
     else
       render plain: "Вы кто такие, я вас не знаю, идите ... отсюда"
     end
@@ -20,6 +20,6 @@ class AuthorizationController < ApplicationController
     session.delete(:current_user_id)
     # Очистить мемоизированного текущего пользователя
     @_current_user = nil
-    redirect_to root_url
+    redirect_to :controller => 'authorization', :action => 'index'
   end
 end
