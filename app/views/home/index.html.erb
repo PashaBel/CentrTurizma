@@ -1,7 +1,7 @@
-<% provide(:title, 'значение переменной UserName из сессии Home') %>
+<% provide(:title, session[:UserName] %>
 
 
-<h1>Тут значние поля Centers.name</h1>
+<h1>Добро пожаловать <% session[:UserName] %></h1>
 <p>
 тут ссылки на действия
 </p>
