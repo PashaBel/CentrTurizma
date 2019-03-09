@@ -1,7 +1,11 @@
 <% provide(:title, 'User') %>
 
 
-<h1></h1>
+<h1>Список всех зарегистрированных пользователей</h1>
 <p>
-  тут ссылки на действия
+<%=
+  User.find_each do |user|
+      puts (user.user_name ' | ' user.user_password ' | ' user.user_type_id ' | ' user.created_at)
+    end
+%>
 </p>

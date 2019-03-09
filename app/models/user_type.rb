@@ -1,3 +1,3 @@
-class User_Type < ApplicationRecord
+class UserType < ApplicationRecord
   ADMIN = 'admin'
 end
