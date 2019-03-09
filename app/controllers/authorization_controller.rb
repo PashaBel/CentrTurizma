@@ -1,7 +1,9 @@
 class AuthorizationController < ApplicationController
   layout 'application'
-  # сключаем отображение страницы авторизации из проверки на то залогирован ли кто нибудь или нет дабы не зациклить страницу
+
+  # исключаем отображение страницы авторизации из проверки на то залогирован ли кто нибудь или нет дабы не зациклить страницу
   skip_before_action :require_login
+
 
   def index
     reset_session
@@ -25,6 +27,6 @@ class AuthorizationController < ApplicationController
     session.delete(:current_user_id)
     # Очистить мемоизированного текущего пользователя
     @_current_user = nil
-    redirect_to :controller => 'authorization', :action => 'index'
+    redirect_to root_url
   end
 end
