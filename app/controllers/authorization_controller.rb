@@ -1,5 +1,6 @@
 class AuthorizationController < ApplicationController
   layout 'application'
+  # сключаем отображение страницы авторизации из проверки на то залогирован ли кто нибудь или нет дабы не зациклить страницу
   skip_before_action :require_login
 
   def index
