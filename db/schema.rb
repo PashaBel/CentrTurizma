@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_170543) do
+ActiveRecord::Schema.define(version: 2019_03_11_110040) do
 
   create_table "centers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", limit: 50
     t.integer "district_id"
+    t.integer "locality_id"
   end
 
   create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -26,6 +27,17 @@ ActiveRecord::Schema.define(version: 2019_03_08_170543) do
     t.string "name", limit: 50
     t.string "email", limit: 30
     t.integer "center_id"
+    t.integer "locality_id"
+  end
+
+  create_table "localities", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name", limit: 30
+    t.integer "district_id"
+    t.integer "locality_type_id"
+  end
+
+  create_table "locality_types", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name", limit: 20
   end
 
   create_table "point_types", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -33,10 +45,11 @@ ActiveRecord::Schema.define(version: 2019_03_08_170543) do
   end
 
   create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name", limit: 20
+    t.string "name", limit: 100
     t.text "description"
     t.integer "point_type_id"
     t.integer "district_id"
+    t.integer "locality_id"
   end
 
   create_table "regions", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -48,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_03_08_170543) do
     t.integer "point_id"
     t.integer "trip_id"
     t.integer "display_order"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "updated_at"
   end
 
   create_table "tour_report", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -58,19 +73,18 @@ ActiveRecord::Schema.define(version: 2019_03_08_170543) do
   create_table "trips", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.date "date"
     t.integer "institution_id"
-  end
-
-  create_table "user_types", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name", limit: 20
+    t.integer "students_count"
+    t.string "number_order", limit: 20
+    t.date "date_order"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "updated_at"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "user_name"
     t.string "user_password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "center_id"
-    t.integer "user_type_id"
+    t.boolean "is_admin"
     t.string "email", limit: 30
   end
 
