@@ -75,11 +75,6 @@ ActiveRecord::Schema.define(version: 2019_03_11_110040) do
     t.datetime "updated_at"
   end
 
-  create_table "user_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 20
-    t.string "lookup_code"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "user_name"
     t.string "user_password"
