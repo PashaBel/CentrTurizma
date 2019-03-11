@@ -1,10 +1,6 @@
 class HomeController < ApplicationController
   def index
-    if current_user.is_admin?
-      array = [['name','Управление пользователями'], ['controller','user']]
-      @links = hash[*array.flatten]
-    else
-      @links = ''
-    end
+      @links = []
+      @links << {name: 'Управление', controller: 'user'} if current_user.is_admin?
   end
 end

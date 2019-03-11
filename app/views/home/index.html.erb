@@ -7,7 +7,7 @@
   <tbody>
   <% @links.each do |url|%>
       <tr>
-        <td><<%= link_to url.name, controller: url.controller %></td>
+        <td><<%= link_to url.value(name), controller: url.value(controller) %></td>
       </tr>
   <%end%>
   </tbody>
