@@ -2,7 +2,7 @@ class UserController < ApplicationController
 
   def index
    if current_user.is_admin?
-     @user = User.find_each
+     @user = User.all
    else
      redirect_to :controller => 'home', :action => 'index'
    end
