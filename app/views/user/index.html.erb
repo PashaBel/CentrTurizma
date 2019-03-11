@@ -16,7 +16,7 @@
         <tr>
           <td><%= usr.user_name %></td>
           <td><%= usr.user_password %></td>
-          <td><% if usr.is_admin?%>
+          <td><% if usr.is_admin == true %>
                   Admin
                 <%else%>
                   User
