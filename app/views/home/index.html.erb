@@ -3,11 +3,11 @@
 
 <h1>Добро пожаловать</h1>
 <p>
-<table border="1">
+<table >
   <tbody>
   <% @links.each do |url|%>
       <tr>
-        <td><<%= link_to url.value(name), controller: url.value(controller) %></td>
+        <td><%= link_to url[:name],  controller: url[:controller] %></td>
       </tr>
   <%end%>
   </tbody>
