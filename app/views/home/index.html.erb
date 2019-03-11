@@ -1,7 +1,15 @@
 <% provide(:title, 'Home') %>
 
 
-<h1>Добро пожаловать </h1>
+<h1>Добро пожаловать</h1>
 <p>
-тут ссылки на действия
+<table border="1">
+  <tbody>
+  <% @links.each do |url|%>
+      <tr>
+        <td><<%= link_to url.name, controller: url.controller %></td>
+      </tr>
+  <%end%>
+  </tbody>
+</table>
 </p>
