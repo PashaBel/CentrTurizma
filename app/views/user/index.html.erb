@@ -15,14 +15,19 @@
     <tbody>
       <% @hash.each do |usrs|%>
         <tr>
-          <td><%= usrs[:usr_name] %></td>
-          <td><%= usrs[:usr_password] %></td>
-          <td><%= usrs[:usr_centr_name] %></td>
-          <td><%= usrs[:usr_type] %>
+          <td><%= usrs[:name] %></td>
+          <td><%= usrs[:password] %></td>
+          <td><%= usrs[:centr_name] %></td>
+          <td><%= usrs[:type] %>
           </td>
         </tr>
       <%end%>
     </tbody>
+    <tfoot>
+      <tr><%= link_to 'Добавить пользователя', controller: 'user', action: 'create' %></tr>
+      <tr><%= link_to 'Редактировать пользователя', controller: 'user', action: 'edit' %></tr>
+      <tr><%= link_to 'Удалить пользователя', controller: 'user', action: 'delete' %></tr>
+    </tfoot>
   </table>
 
 </p>
