@@ -14,9 +14,7 @@
     </thead>
     <tfoot>
       <tr>
-        <td><%= link_to 'Добавить пользователя', new_user_path %><br>
-        <%= link_to 'Редактировать пользователя', edit_user_path(:id) %><br>
-        <%= link_to 'Удалить пользователя', user_path(:id), method: :delete, date: {confirm: 'Вы уверены?'} %></td>
+        <td><%= link_to 'Добавить пользователя', new_user_path %></td>
       </tr>
     </tfoot>
     <tbody>
@@ -26,6 +24,9 @@
           <td><%= usrs[:password] %></td>
           <td><%= usrs[:centr_name] %></td>
           <td><%= usrs[:type] %></td>
+          <td><%= link_to 'Редактировать', edit_user_path(:id) %><br>
+              <%= link_to 'Удалить', user_path(:id), method: :delete, date: {confirm: 'Вы уверены?'} %>
+          </td>
         </tr>
       <%end%>
     </tbody>
