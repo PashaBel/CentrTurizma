@@ -18,14 +18,14 @@
       </tr>
     </tfoot>
     <tbody>
-      <% @hash.each do |usrs|%>
+      <% @hash.each do |usrs| %>
         <tr>
           <td><%= usrs[:name] %></td>
           <td><%= usrs[:password] %></td>
           <td><%= usrs[:centr_name] %></td>
           <td><%= usrs[:type] %></td>
-          <td><%= link_to 'Редактировать', edit_user_path(:id) %><br>
-              <%= link_to 'Удалить', user_path(:id), method: :delete, date: {confirm: 'Вы уверены?'} %>
+          <td><%= link_to 'Редактировать', edit_user_path(usrs[:id]) %><br>
+              <%= link_to 'Удалить', user_path(usrs[:id]), confirm: 'Вы уверены?', method: :delete%>
           </td>
         </tr>
       <%end%>

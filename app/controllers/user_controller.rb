@@ -2,7 +2,7 @@ class UserController < ApplicationController
 
   def index
    if current_user.is_admin?
-     @hash = User.all.map{ |usr| {name: usr.user_name, password: usr.user_password, centr_name: usr.center&.name, type: usr.is_admin? ? 'Admin' : 'User'} }
+     @hash = User.all.map{ |usr| {id: usr.id, name: usr.user_name, password: usr.user_password, centr_name: usr.center&.name, type: usr.is_admin? ? 'Admin' : 'User'} }
    else
      redirect_to :controller => 'home', :action => 'index'
    end
@@ -16,7 +16,7 @@ class UserController < ApplicationController
 
   end
 
-  def delete
+  def destroy
 
   end
 end
