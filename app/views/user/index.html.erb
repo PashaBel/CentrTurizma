@@ -12,6 +12,13 @@
         <th>User Type</th>
       </tr>
     </thead>
+    <tfoot>
+      <tr>
+        <td> <%= link_to 'Добавить пользователя', controller: 'user', action: 'create' %> </td>
+        <td><%= link_to 'Редактировать пользователя', controller: 'user', action: 'edit' %></td>
+        <td><%= link_to 'Удалить пользователя', controller: 'user', action: 'delete' %></td>
+      </tr>
+    </tfoot>
     <tbody>
       <% @hash.each do |usrs|%>
         <tr>
@@ -23,11 +30,6 @@
         </tr>
       <%end%>
     </tbody>
-    <tfoot>
-      <tr><%= link_to 'Добавить пользователя', controller: 'user', action: 'create' %></tr>
-      <tr><%= link_to 'Редактировать пользователя', controller: 'user', action: 'edit' %></tr>
-      <tr><%= link_to 'Удалить пользователя', controller: 'user', action: 'delete' %></tr>
-    </tfoot>
   </table>
 
 </p>
