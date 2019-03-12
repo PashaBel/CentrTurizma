@@ -6,17 +6,17 @@
   <table border="1">
     <thead>
       <tr>
-        <th>User Name</th>
-        <th>User Password</th>
-        <th>User Centr Name</th>
-        <th>User Type</th>
+        <th>Логин</th>
+        <th>Пароль</th>
+        <th>Название центра</th>
+        <th>Тип пользователя</th>
       </tr>
     </thead>
     <tfoot>
       <tr>
-        <td> <%= link_to 'Добавить пользователя', controller: 'user', action: 'create' %> </td>
-        <td><%= link_to 'Редактировать пользователя', controller: 'user', action: 'edit' %></td>
-        <td><%= link_to 'Удалить пользователя', controller: 'user', action: 'delete' %></td>
+        <td><%= link_to 'Добавить пользователя', new_user_path %><br>
+        <%= link_to 'Редактировать пользователя', edit_user_path(:id) %><br>
+        <%= link_to 'Удалить пользователя', user_path(:id), method: :delete, date: {confirm: 'Вы уверены?'} %></td>
       </tr>
     </tfoot>
     <tbody>
@@ -25,11 +25,9 @@
           <td><%= usrs[:name] %></td>
           <td><%= usrs[:password] %></td>
           <td><%= usrs[:centr_name] %></td>
-          <td><%= usrs[:type] %>
-          </td>
+          <td><%= usrs[:type] %></td>
         </tr>
       <%end%>
     </tbody>
   </table>
-
 </p>
