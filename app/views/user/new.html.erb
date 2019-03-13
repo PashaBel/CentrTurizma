@@ -1,6 +1,5 @@
 <% provide(:title, 'Create New User') %>
 
-
 <h1>Создание нового пользователя</h1>
 <p>
   <%= form_tag(users_path, {name: 'user_new_form', id: 'user_new_form', method: :post}) do %>
@@ -14,8 +13,8 @@
     <p><%= label_tag(:confirm_password, "Повторите пароль") %><br>
       <%= password_field_tag(:confirm_password) %></p>
 
-    <p><%= collection_select(:center, :center_id, Center.all, :id, :name) %></p>
+    <p><%= select_tag(:center_id, options_from_collection_for_select(Center.all, :id, :name)) %></p>
 
     <p><%= submit_tag("Создать") %></p>
-<%end%>
+<% end %>
 </p>

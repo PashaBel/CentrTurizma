@@ -1,0 +1,21 @@
+<% provide(:title, 'Edit User') %>
+
+<h1>Редактирование пользователя</h1>
+<p>
+  <% @edit_user.each do |usrs| %>
+  <%= form_tag(users_path, {name: 'user_edit_form', id: 'user_edit_form', method: :post}) do %>
+
+    <p><%= label_tag(:name, "Введите имя полльзователя") %><br>
+      <%= text_field_tag(:name, value = usrs[:name]) %></p>
+
+    <p><%= label_tag(:password, "Введите пароль") %><br>
+      <%= password_field_tag(:password, value = usrs[:password]) %></p>
+
+    <p><%= label_tag(:confirm_password, "Повторите пароль") %><br>
+      <%= password_field_tag(:confirm_password) %></p>
+
+    <p><%= select_tag(:center_id, options_from_collection_for_select(Center.all, :id, :name)) %></p>
+
+    <p><%= submit_tag("Сохранить") %></p>
+<% end %>
+</p>

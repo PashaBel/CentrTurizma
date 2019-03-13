@@ -1,6 +1,5 @@
 <% provide(:title, 'User') %>
 
-
 <h1>Список всех зарегистрированных пользователей</h1>
 <p>
   <table border="1">
@@ -25,7 +24,7 @@
           <td><%= usrs[:centr_name] %></td>
           <td><%= usrs[:type] %></td>
           <td><%= link_to 'Редактировать', edit_user_path(usrs[:id]) %><br>
-              <%= link_to 'Удалить', user_path(usrs[:id]), confirm: 'Вы уверены?', method: :delete %>
+              <%= link_to 'Удалить', user_path(usrs[:id]), method: :delete, data: { confirm: 'Вы уверены что ходите удалить пользователя ' + usrs[:name] + '?' } %>
           </td>
         </tr>
       <% end %>
