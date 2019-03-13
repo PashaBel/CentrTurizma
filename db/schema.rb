@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_110040) do
+ActiveRecord::Schema.define(version: 2019_03_13_113933) do
 
   create_table "centers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 50
     t.integer "district_id"
     t.integer "locality_id"
+    t.string "email", limit: 30
   end
 
   create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,7 +81,6 @@ ActiveRecord::Schema.define(version: 2019_03_11_110040) do
     t.string "user_password"
     t.integer "center_id"
     t.boolean "is_admin"
-    t.string "email", limit: 30
   end
 
 end

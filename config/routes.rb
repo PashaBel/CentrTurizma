@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root 'authorization#index'
   get 'authorization/index'
   get 'authorization/logon'
-  root 'authorization#index'
   post 'authorization/logon'
   get 'home/index'
   get 'user/index'
