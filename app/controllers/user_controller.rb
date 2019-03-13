@@ -12,6 +12,23 @@ class UserController < ApplicationController
 
   end
 
+  def create
+    if params[:password] == params[:confirm_password]
+      params[:password]
+    else
+      flash.now[:error] = 'Пароли не совпадают'
+      render action: 'new'
+    end
+    new_user = User.create(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
+    if new_user
+      flash.now[:notice] = 'Пользователь успешно создан'
+      redirect_to :controller => 'user', :action => 'index'
+    else
+      flash.now[:error] = 'Пользователь не создан'
+      render action: 'new'
+    end
+  end
+
   def edit
 
   end
