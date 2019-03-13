@@ -25,10 +25,10 @@
           <td><%= usrs[:centr_name] %></td>
           <td><%= usrs[:type] %></td>
           <td><%= link_to 'Редактировать', edit_user_path(usrs[:id]) %><br>
-              <%= link_to 'Удалить', user_path(usrs[:id]), confirm: 'Вы уверены?', method: :delete%>
+              <%= link_to 'Удалить', user_path(usrs[:id]), confirm: 'Вы уверены?', method: :delete %>
           </td>
         </tr>
-      <%end%>
+      <% end %>
     </tbody>
   </table>
 </p>

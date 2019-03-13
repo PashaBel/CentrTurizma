@@ -3,7 +3,7 @@
 
 <h1>Создание нового пользователя</h1>
 <p>
-  <%= form_tag({:action => 'create'},{name: 'user_new_form', id: 'user_new_form'}) do -%>
+  <%= form_tag(users_path, {name: 'user_new_form', id: 'user_new_form', method: :post}) do %>
 
     <p><%= label_tag(:name, "Введите имя полльзователя") %><br>
       <%= text_field_tag(:name) %></p>
