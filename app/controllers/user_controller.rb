@@ -23,7 +23,6 @@ class UserController < ApplicationController
     new_user = User.create(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
     if new_user
       flash.now[:notice] = 'Пользователь успешно создан'
-      new_user.save
       redirect_to :controller => 'user', :action => 'index'
     else
       flash.now[:alert] = 'Пользователь не создан'
