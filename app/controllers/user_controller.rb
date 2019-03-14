@@ -34,8 +34,28 @@ class UserController < ApplicationController
   end
 
   def edit
-    @edit_user = User.find_by.map(id: params[:id]){ |usr| {name: usr.user_name, password: usr.user_password }}
+    usr = User.find_by(id: params[:id])
+    @edit_user = { id: usr.id, name: usr.user_name, password: usr.user_password }
+  end
 
+  def update
+    if params[:password] == params[:confirm_password]
+      params[:password]
+    else
+      flash.now[:alert] = 'Пароли не совпадают'
+      render action: 'new'
+      return
+    end
+    usr = User.find_by(id: params[:id])
+    usr.update(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
+    if usr
+      flash[:notice] = 'Пользователь успешно изменен'
+      redirect_to controller: :user, action: :index
+    else
+      flash.now[:alert] = 'что то пошло не так пробуем еще раз'
+      render action: 'update'
+      return
+    end
   end
 
   def destroy
