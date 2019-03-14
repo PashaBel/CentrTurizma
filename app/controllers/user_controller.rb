@@ -15,6 +15,7 @@ class UserController < ApplicationController
       params[:password]
     else
       flash.now[:alert] = 'Пароли не совпадают'
+      @center_list = Center.all.map{|center| [center.name, center.id]}
       render action: 'new'
       return
     end
@@ -40,6 +41,7 @@ class UserController < ApplicationController
       params[:password]
     else
       flash.now[:alert] = 'Пароли не совпадают'
+      @center_list = Center.all.map{|center| [center.name, center.id]}
       render action: 'new'
       return
     end
