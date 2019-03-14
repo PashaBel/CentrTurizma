@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails CentrTurizma: development" uuid="9eb9339b-b815-4f8e-9524-bc8d7f280e8d">
+      <user-name>root</user-name>
+      <schema-pattern>CentrTurizma.*</schema-pattern>
+      <default-schemas>CentrTurizma.*</default-schemas>
+    </data-source>
+    <data-source name="Rails CentrTurizma: production" uuid="b647f5d4-7ecd-49c7-93ee-83d5fb4ef026">
+      <user-name>CentrTurizma</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe9dfefdfe4dffedff8dffedfffdff8dfe3dff0dfe7dfebdff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
+    <data-source name="Rails CentrTurizma: test" uuid="4eb73239-7dcb-437d-929a-b5ec102b9bc2">
+      <user-name>root</user-name>
+    </data-source>
+  </component>
+</project>
