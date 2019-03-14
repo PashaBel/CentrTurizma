@@ -13,7 +13,7 @@
     <p><%= label_tag(:confirm_password, "Повторите пароль") %><br>
       <%= password_field_tag(:confirm_password, @edit_user[:password]) %></p>
 
-    <p><%= select_tag(:center_id, options_from_collection_for_select(Center.all, :id, :name)) %></p>
+    <p><%= select_tag(:center_id, options_for_select(@center_list)) %></p>
 
     <p><%= submit_tag("Сохранить") %></p>
 <% end %>
