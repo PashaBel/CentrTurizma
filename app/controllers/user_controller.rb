@@ -32,6 +32,7 @@ class UserController < ApplicationController
   def edit
     usr = User.find_by(id: params[:id])
     @edit_user = { id: usr.id, name: usr.user_name, password: usr.user_password }
+    @center_list = Center.all.map{|center| [center.name, center.id]}
   end
 
   def update
