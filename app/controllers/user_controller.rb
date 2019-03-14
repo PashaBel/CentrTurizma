@@ -3,15 +3,11 @@ class UserController < ApplicationController
   before_action :require_admin
 
   def index
-   if current_user.is_admin?
-     @hash = User.all.map{ |usr| {id: usr.id, name: usr.user_name, password: usr.user_password, centr_name: usr.center&.name, type: usr.is_admin? ? 'Admin' : 'User'} }
-   else
-     redirect_to controller: :home, action: :index
-   end
+    @hash = User.all.map{ |usr| {id: usr.id, name: usr.user_name, password: usr.user_password, centr_name: usr.center&.name, type: usr.is_admin? ? 'Admin' : 'User'} }
   end
 
   def new
-
+    @center_list = Center.all.map{|center| [center.name, center.id]}
   end
 
   def create
@@ -19,6 +15,7 @@ class UserController < ApplicationController
       params[:password]
     else
       flash.now[:alert] = 'Пароли не совпадают'
+      @center_list = Center.all.map{|center| [center.name, center.id]}
       render action: 'new'
       return
     end
@@ -34,8 +31,30 @@ class UserController < ApplicationController
   end
 
   def edit
-    @edit_user = User.select(params[:id]).map{ |usr| {name: usr.user_name, password: usr.user_password }}
+    usr = User.find_by(id: params[:id])
+    @edit_user = { id: usr.id, name: usr.user_name, password: usr.user_password }
+    @center_list = Center.all.map{|center| [center.name, center.id]}
+  end
 
+  def update
+    if params[:password] == params[:confirm_password]
+      params[:password]
+    else
+      flash.now[:alert] = 'Пароли не совпадают'
+      @center_list = Center.all.map{|center| [center.name, center.id]}
+      render action: 'new'
+      return
+    end
+    usr = User.find_by(id: params[:id])
+    usr.update(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
+    if usr
+      flash[:notice] = 'Пользователь успешно изменен'
+      redirect_to controller: :user, action: :index
+    else
+      flash.now[:alert] = 'что то пошло не так пробуем еще раз'
+      render action: 'update'
+      return
+    end
   end
 
   def destroy
