@@ -4,6 +4,6 @@
 <p>
   <%= form_tag(users_path, {name: 'user_new_form', id: 'user_new_form', method: :post}) do %>
     <%= render "user" %>
-    <p><%= submit_tag("Создать") %></p>
+    <%= submit_tag("Создать") %></p>
   <% end %>
 </p>

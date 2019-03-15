@@ -8,3 +8,5 @@
   <%= password_field_tag(:confirm_password, @edit_user[:password]) %></p>
 
 <p><%= select_tag(:center_id, options_for_select(@center_list, @edit_user[:centr_id])) %></p>
+
+<p><input type="button" value="Отмена" onclick="<% redirect_to controller: :user, action: :index %>">
