@@ -15,16 +15,9 @@ class AuthorizationController < ApplicationController
       session[:current_user_id] = user.id
       redirect_to :controller => 'home', :action => 'index'
     else
-      render plain: "Вы кто такие, я вас не знаю, идите ... отсюда"
+      redirect_to 'https://youtu.be/qn9FkoqYgI4'
+      #render plain: "Вы кто такие, я вас не знаю, идите ... отсюда"
     end
   end
 
-  # "Удаляем" логин (при выходе пользователя)
-  def destroy
-    # Убираем id пользователя из сессии
-    session.delete(:current_user_id)
-    # Очистить мемоизированного текущего пользователя
-    @_current_user = nil
-    redirect_to root_url
-  end
 end

@@ -3,7 +3,7 @@ class UserController < ApplicationController
   before_action :require_admin
 
   def index
-    @hash = User.all.map{ |usr| {id: usr.id, name: usr.user_name, password: usr.user_password, centr_name: usr.center&.name, type: usr.is_admin? ? 'Admin' : 'User'} }
+    @hash = User.all.map{ |usr| {id: usr.id, name: usr.user_name, password: usr.user_password, centr_name: usr.center&.name, type: usr.is_admin? ? 'Администратор' : 'Пользователь'} }
   end
 
   def new
