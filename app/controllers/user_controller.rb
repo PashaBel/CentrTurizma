@@ -8,7 +8,7 @@ class UserController < ApplicationController
 
   def new
     @center_list = Center.all.map{|center| [center.name, center.id]}
-    @edit_user = { id: '', name: '', password: '' }
+    @edit_user = { id: '', name: '', password: '', centr_id: 1 }
   end
 
   def create
