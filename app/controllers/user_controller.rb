@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 
   before_action :require_admin
+  before_action :redirect_cancel, only: [:create, :update]
 
   def index
     @hash = User.all.map{ |usr| {id: usr.id, name: usr.user_name, password: usr.user_password, centr_name: usr.center&.name, type: usr.is_admin? ? 'Admin' : 'User'} }
@@ -67,6 +68,10 @@ class UserController < ApplicationController
     unless current_user.is_admin?
       redirect_to controller: :home, action: :index
     end
+  end
+
+  def redirect_cancel
+    redirect_to user_index_path if params[:cancel]
   end
 
 end
