@@ -3,7 +3,9 @@
 <h1>Редактирование пользователя</h1>
 <p>
     <%= form_tag(user_path(id: @edit_user[:id]), {name: 'user_edit_form', id: 'user_edit_form', method: :PUT}) do %>
+
       <%= render "user" %>
-      <p><%= submit_tag("Сохранить") %></p>
+
+    <p><%= submit_tag("Сохранить") %></p>
     <% end %>
 </p>

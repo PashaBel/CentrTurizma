@@ -23,16 +23,12 @@ class UserController < ApplicationController
     if new_user
       flash[:notice] = 'Пользователь успешно создан'
       redirect_to controller: :user, action: :index
-    else
-      flash.now[:alert] = 'Пользователь не создан'
-      render action: 'new'
-      return
     end
   end
 
   def edit
     usr = User.find_by(id: params[:id])
-    @edit_user = { id: usr.id, name: usr.user_name, password: usr.user_password }
+    @edit_user = { id: usr.id, name: usr.user_name, password: usr.user_password, centr_id: usr.center_id }
     @center_list = Center.all.map{|center| [center.name, center.id]}
   end
 
@@ -60,10 +56,8 @@ class UserController < ApplicationController
   def destroy
     destroy_user = User.find_by(id: params[:id])
     destroy_user.destroy
-    if destroy_user
-      flash[:notice] = 'Пользователь успешно удален'
-      redirect_to controller: :user, action: :index
-    end
+    flash[:notice] = 'Пользователь успешно удален'
+    redirect_to controller: :user, action: :index
   end
 
   private
