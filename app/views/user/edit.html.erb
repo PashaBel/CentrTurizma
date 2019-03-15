@@ -3,9 +3,8 @@
 <h1>Редактирование пользователя</h1>
 <p>
     <%= form_tag(user_path(id: @edit_user[:id]), {name: 'user_edit_form', id: 'user_edit_form', method: :PUT}) do %>
-
       <%= render "user" %>
-
+    <p><a href='http://127.0.0.1:3000/user/index'><button>Отмена</button></a>
     <%= submit_tag("Сохранить") %></p>
     <% end %>
 </p>

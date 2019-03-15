@@ -4,6 +4,7 @@
 <p>
   <%= form_tag(users_path, {name: 'user_new_form', id: 'user_new_form', method: :post}) do %>
     <%= render "user" %>
+    <p><a href='http://127.0.0.1:3000/user/index'><button>Отмена</button></a>
     <%= submit_tag("Создать") %></p>
   <% end %>
 </p>
