@@ -1,0 +1,10 @@
+<p><%= label_tag(:name, "Введите имя полльзователя") %><br>
+  <%= text_field_tag(:name) %></p>
+
+<p><%= label_tag(:password, "Введите пароль") %><br>
+  <%= password_field_tag(:password) %></p>
+
+<p><%= label_tag(:confirm_password, "Повторите пароль") %><br>
+  <%= password_field_tag(:confirm_password) %></p>
+
+<p><%= select_tag(:center_id, options_for_select(@center_list)) %></p>
