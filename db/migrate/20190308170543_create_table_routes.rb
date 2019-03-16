@@ -5,6 +5,7 @@ class CreateTableRoutes < ActiveRecord::Migration[5.2]
       t.integer :point_id, null: false
       t.integer :trip_id, null: false
       t.integer :display_order, null: false
+      t.text :notes, null: true
       t.datetime :created_at, default: -> {'CURRENT_TIMESTAMP'}, null: false
       t.datetime :updated_at, null: true
     end
