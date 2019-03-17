@@ -1,7 +1,7 @@
 class CreateTablePointType < ActiveRecord::Migration[5.2]
   def self.up
     create_table :point_types do |t|
-      t.string :name, :limit => 20, null: false, unique: true
+      t.string :name, :limit => 20, null: false, index: { unique: true }
     end
   end
   def self.down
