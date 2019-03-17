@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'authorization/logon'
   post 'authorization/logon'
   get 'home/index'
-  get 'user/index'
-  resources :users, controller: 'user'
-  #get 'user/create'
+  get 'users/index'
+  resources :users
+  #get 'users/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

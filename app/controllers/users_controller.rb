@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   before_action :require_admin
 
@@ -23,7 +23,7 @@ class UserController < ApplicationController
     new_user = User.create(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
     if new_user
       flash[:notice] = 'Пользователь успешно создан'
-      redirect_to controller: :user, action: :index
+      redirect_to controller: :users, action: :index
     end
   end
 
@@ -46,7 +46,7 @@ class UserController < ApplicationController
     usr.update(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
     if usr
       flash[:notice] = 'Пользователь успешно изменен'
-      redirect_to controller: :user, action: :index
+      redirect_to controller: :users, action: :index
     else
       flash.now[:alert] = 'что то пошло не так пробуем еще раз'
       render action: 'update'
@@ -58,7 +58,7 @@ class UserController < ApplicationController
     destroy_user = User.find_by(id: params[:id])
     destroy_user.destroy
     flash[:notice] = 'Пользователь успешно удален'
-    redirect_to controller: :user, action: :index
+    redirect_to controller: :users, action: :index
   end
 
   private

@@ -13,7 +13,7 @@ class AuthorizationController < ApplicationController
     user = User.where(user_name: params[:userName], user_password: params[:userPassword]).first
     if user
       session[:current_user_id] = user.id
-      redirect_to :controller => 'home', :action => 'index'
+      redirect_to controller: :home, action: :index
     else
       redirect_to 'https://youtu.be/qn9FkoqYgI4'
       #render plain: "Вы кто такие, я вас не знаю, идите ... отсюда"
