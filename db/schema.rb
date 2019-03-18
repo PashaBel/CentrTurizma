@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(version: 2019_03_09_163007) do
   end
 
   create_table "locality_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 20, null: false
+    t.string "short_name", limit: 5, null: false
+    t.string "name", limit: 50, null: false
     t.index ["name"], name: "index_locality_types_on_name", unique: true
+    t.index ["short_name"], name: "index_locality_types_on_short_name", unique: true
   end
 
   create_table "point_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
