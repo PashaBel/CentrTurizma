@@ -11,3 +11,18 @@ require 'csv'
 CSV.foreach('/Volumes/Data/Work/insert_db/locality_type.csv', headers: true) do |row|
   Locality_Type.create!(row.to_hash)
 end
+
+
+
+short_name,name
+аг.,агрогородок
+г.,город
+гп.,городской поселок
+д.,деревня
+кп.,курортный поселок
+п.,поселок
+пгт.,поселок городского типа
+рп.,рабочий поселок
+с.,село
+снп.,сельский населенный пункт
+х.,хутор
