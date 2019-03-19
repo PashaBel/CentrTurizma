@@ -1,5 +1,9 @@
 require 'csv'
 
-CSV.foreach('/Volumes/Data/Work/insert_db/locality_type.csv', headers: true) do |row|
-  Locality_Type.create!(row.to_hash)
+hash = CSV.foreach('/home/pbelevich/Desktop/CITY.csv', headers: true).map(&:to_h)
+oblhash = hash.group_by { |obl| obl['OBL'] }
+oblhash.each do |oblnm, oblnm_value|
+  i = oblnm
+  puts i
 end
+
