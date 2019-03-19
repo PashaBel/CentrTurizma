@@ -17,8 +17,7 @@ class UsersController < ApplicationController
     else
       flash.now[:alert] = 'Пароли не совпадают'
       @center_list = Center.all.map{|center| [center.name, center.id]}
-      render action: 'new'
-      return
+      render action: 'new' and return
     end
     new_user = User.create(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
     if new_user
@@ -39,8 +38,7 @@ class UsersController < ApplicationController
     else
       flash.now[:alert] = 'Пароли не совпадают'
       @center_list = Center.all.map{|center| [center.name, center.id]}
-      render action: 'new'
-      return
+      render action: 'new' and return
     end
     usr = User.find_by(id: params[:id])
     usr.update(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
@@ -49,8 +47,7 @@ class UsersController < ApplicationController
       redirect_to controller: :users, action: :index
     else
       flash.now[:alert] = 'что то пошло не так пробуем еще раз'
-      render action: 'update'
-      return
+      render action: 'update' and return
     end
   end
 
