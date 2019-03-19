@@ -2,6 +2,7 @@ require 'csv'
 
 i = 0
 j = 0
+n = 0
 filename = '/Volumes/Data/Work/insert_db/CITY.csv'
 #filename = '/home/pbelevich/Desktop/CITY.csv'
 
@@ -14,6 +15,10 @@ oblhash.each do |oblnm, oblnm_value|
   rayonname.each do |raynm, raynm_value|
     j += 1
     puts "District.Create(region_id: '#{i}', name: '#{raynm}')" + "его id в БД = '#{j}'; id  области = '#{i}'"
+    raynm_value.each do |nasnm|
+      n += 1
+      puts "Locality.Create(district_id: '#{j}', name: '#{nasnm['NAME']}')" + "его id в БД = '#{n}'; id  области = '#{i}; id района = '#{j}' "
+    end
   end
 end
 
