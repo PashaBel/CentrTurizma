@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_163007) do
+ActiveRecord::Schema.define(version: 2019_03_19_191328) do
 
   create_table "centers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_163007) do
     t.string "name", limit: 30, null: false
     t.integer "district_id", null: false
     t.integer "locality_type_id", null: false
-    t.index ["name"], name: "index_localities_on_name", unique: true
+    t.index ["name", "district_id"], name: "index_localities_on_name_and_district_id", unique: true
   end
 
   create_table "locality_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
