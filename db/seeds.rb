@@ -8,8 +8,14 @@
 
 require 'csv'
 
-CSV.foreach('/Volumes/Data/Work/insert_db/locality_type.csv', headers: true) do |row|
-  Locality_Type.create!(row.to_hash)
-end
+
+filename = '/Volumes/Data/Work/insert_db/CITY.csv'
+#filename = '/home/pbelevich/Desktop/CITY.csv'
+
+filearray = CSV.foreach(filename, headers: true).map(&:to_h)
+
+tips = filearray.map{ |tiplist| tiplist['TIP'].gsub('.', '') }.uniq
+tips.each { |tip| LocalityType.create!(short_name: tip) }
+
 
 

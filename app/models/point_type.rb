@@ -1,2 +1,2 @@
-class Point_Type < ApplicationRecord
+class PointType < ApplicationRecord
 end

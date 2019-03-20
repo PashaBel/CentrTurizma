@@ -1,3 +1,3 @@
-class Locality_Type  < ApplicationRecord
+class LocalityType  < ApplicationRecord
 
 end
