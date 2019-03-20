@@ -40,13 +40,12 @@ ActiveRecord::Schema.define(version: 2019_03_19_191328) do
     t.integer "district_id", null: false
     t.integer "locality_type_id", null: false
     t.index ["name", "district_id"], name: "index_localities_on_name_and_district_id", unique: true
+    t.index ["name"], name: "index_localities_on_name", unique: true
   end
 
   create_table "locality_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "short_name", limit: 5, null: false
-    t.string "name", limit: 50, null: false
+    t.string "name", limit: 20, null: false
     t.index ["name"], name: "index_locality_types_on_name", unique: true
-    t.index ["short_name"], name: "index_locality_types_on_short_name", unique: true
   end
 
   create_table "point_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
