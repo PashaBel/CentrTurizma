@@ -8,8 +8,8 @@ filename = '/Volumes/Data/Work/insert_db/CITY.csv'
 
 filearray = CSV.foreach(filename, headers: true).map(&:to_h)
 
-#tips = filearray.map{ |tiplist| tiplist['TIP'].gsub('.', '') }.uniq
-#tips.each { |tip| puts "Locality_Type.Create!(short_name: '#{tip}')" }
+tips = filearray.map{ |tiplist| tiplist['TIP'].gsub('.', '') }.uniq
+ыtips.each { |tip| puts "Locality_Type.Create!(short_name: '#{tip}')" }
 typehash = LocalityType.pluck(:short_name, :id).to_h
 puts "#{typehash}"
 
