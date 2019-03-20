@@ -10,7 +10,7 @@ filearray = CSV.foreach(filename, headers: true).map(&:to_h)
 
 tips = filearray.map{ |tiplist| tiplist['TIP'].gsub('.', '') }.uniq
 tips.each { |tip| puts "Locality_Type.Create!(short_name: '#{tip}')" }
-puts 'Locality_Type.select(:id, :short_name).all.each { |t| tips[t.short_name] = t.id }'
+request = Locality_Type.select(:id, :short_name).all.each { |t| tips[t.short_name] = t.id }
 
 oblhash = filearray.group_by { |obl| obl['OBL'] }
 
