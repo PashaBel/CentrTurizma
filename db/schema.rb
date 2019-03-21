@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_191328) do
     t.string "name", limit: 30, null: false
     t.integer "district_id", null: false
     t.integer "locality_type_id", null: false
-    t.index ["name", "district_id"], name: "index_localities_on_name_and_district_id", unique: true
+    t.index ["name", "district_id", "locality_type_id"], name: "index_localities_on_name_and_district_id_and_locality_type_id", unique: true
   end
 
   create_table "locality_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
