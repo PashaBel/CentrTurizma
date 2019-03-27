@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
+=begin
     if params[:password] == params[:confirm_password]
       params[:password]
     else
@@ -19,11 +20,10 @@ class UsersController < ApplicationController
       @center_list = Center.all.map{|center| [center.name, center.id]}
       render action: 'new' and return
     end
+=end
     new_user = User.create(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
-    if new_user
-      flash[:notice] = 'Пользователь успешно создан'
-      redirect_to controller: :users, action: :index
-    end
+    flash[:notice] = new_user.errors.full_messages
+    redirect_to controller: :users, action: :index
   end
 
   def edit
