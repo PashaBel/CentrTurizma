@@ -22,7 +22,9 @@ class UsersController < ApplicationController
     end
 =end
     new_user = User.create(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
-    flash[:notice] = new_user.errors.full_messages
+    new_user.errors.messages.each do |msg|
+      flash[:notice] = msg
+    end
     redirect_to controller: :users, action: :index
   end
 
