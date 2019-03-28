@@ -7,28 +7,25 @@ class UsersController < ApplicationController
   end
 
   def new
+    @view_err_message = []
     @center_list = Center.all.map{|center| [center.name, center.id]}
     @edit_user = { id: '', name: '', password: '', centr_id: 1 }
   end
 
   def create
-=begin
-    if params[:password] == params[:confirm_password]
-      params[:password]
-    else
-      flash.now[:alert] = 'Пароли не совпадают'
-      @center_list = Center.all.map{|center| [center.name, center.id]}
-      render action: 'new' and return
-    end
-=end
+    @view_err_message = []
     new_user = User.create(user_name: params[:name], user_password: params[:password], user_password_confirmation: '', center_id: params[:center_id])
     msg = new_user.errors.messages
     msg.each do |errmsg, errmsg_value|
       errmsg_value.each do |display|
-        flash[:notice] = display
+        @view_err_message << display
       end
     end
-    redirect_to controller: :users, action: :index
+    if @view_err_message != []
+      render action: 'new' and return
+    else
+      redirect_to controller: :users, action: :index
+    end
   end
 
   def edit

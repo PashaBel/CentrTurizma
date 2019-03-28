@@ -1,5 +1,12 @@
 <% provide(:title, 'Create New User') %>
 
+<ul>
+  <% @view_err_message.each do |msg|%>
+      <li>
+        <% flash[:notice] = msg %>
+      </li>
+  <%end%>
+</ul>
 <h1>Создание нового пользователя</h1>
 <p>
   <%= form_tag(users_path, {name: 'user_new_form', id: 'user_new_form', method: :post}) do %>
