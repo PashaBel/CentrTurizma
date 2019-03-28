@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       render action: 'new' and return
     end
 =end
-    new_user = User.create(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
+    new_user = User.create(user_name: params[:name], user_password: params[:password], user_password_confirmation: '', center_id: params[:center_id])
     msg = new_user.errors.messages
     msg.each do |errmsg, errmsg_value|
       errmsg_value.each do |display|
