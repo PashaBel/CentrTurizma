@@ -6,29 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-=begin
-require 'csv'
-
-
-#filename = '/Volumes/Data/Work/insert_db/CITY.csv'
-filename = '/home/pbelevich/Desktop/CITY.csv'
-
-filearray = CSV.foreach(filename, headers: true).map(&:to_h)
-
-tips = filearray.map{ |tiplist| tiplist['TIP'].gsub('.', '') }.uniq
-tips.each { |tip| LocalityType.create!(short_name: tip) }
-=end
-
-
-
-
 require 'csv'
 
 i = 0
 j = 0
 n = 0
-#filename = '/Volumes/Data/Work/insert_db/CITY.csv'
-filename = '/home/pbelevich/Desktop/CITY.csv'
+filename = '/Volumes/Data/Work/insert_db/CITY.csv'
+#filename = '/home/pbelevich/Desktop/CITY.csv'
 
 filearray = CSV.foreach(filename, headers: true).map(&:to_h)
 
@@ -56,5 +40,5 @@ end
 
 Center.create(name: 'Гродненский', district_id: '1', locality_id: '1', email: 'mail@mail.mail')
 
-User.create(user_name: 'BelPaK', user_password: '123', center_id: '1', is_admin: '1')
-User.create(user_name: 'Alex', user_password: '321', center_id: '1', is_admin: '1')
+User.create(user_name: 'BelPaK', user_password: '123', center_id: 1, is_admin: 1)
+User.create(user_name: 'Alex', user_password: '321', center_id: 1, is_admin: 1)

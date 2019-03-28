@@ -3,7 +3,7 @@
 <ul>
   <% @view_err_message.each do |msg|%>
       <li>
-        <% flash[:notice] = msg %>
+        <%= msg %>
       </li>
   <%end%>
 </ul>
