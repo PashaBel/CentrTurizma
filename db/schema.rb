@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_191328) do
     t.string "user_name", null: false
     t.string "user_password", null: false
     t.integer "center_id", null: false
-    t.integer "is_admin", null: false
+    t.integer "is_admin", default: 0, null: false
     t.index ["user_name"], name: "index_users_on_user_name", unique: true
     t.index ["user_password"], name: "index_users_on_user_password", unique: true
   end
