@@ -21,6 +21,7 @@ tips.each { |tip| LocalityType.create!(short_name: tip) }
 
 
 
+
 require 'csv'
 
 i = 0

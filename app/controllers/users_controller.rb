@@ -22,8 +22,11 @@ class UsersController < ApplicationController
     end
 =end
     new_user = User.create(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
-    new_user.errors.messages.each do |msg|
-      flash[:notice] = msg
+    msg = new_user.errors.messages
+    msg.each do |errmsg, errmsg_value|
+      errmsg_value.each do |display|
+        flash[:notice] = display
+      end
     end
     redirect_to controller: :users, action: :index
   end
