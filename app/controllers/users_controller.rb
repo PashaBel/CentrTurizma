@@ -32,12 +32,14 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @view_err_message = []
     usr = User.find_by(id: params[:id])
     @edit_user = { id: usr.id, name: usr.user_name, password: usr.user_password, centr_id: usr.center_id }
     @center_list = Center.all.map{|center| [center.name, center.id]}
   end
 
   def update
+=begin
     if params[:password] == params[:confirm_password]
       params[:password]
     else
@@ -45,14 +47,23 @@ class UsersController < ApplicationController
       @center_list = Center.all.map{|center| [center.name, center.id]}
       render action: 'new' and return
     end
+=end
+    @view_err_message = []
     usr = User.find_by(id: params[:id])
-    usr.update(user_name: params[:name], user_password: params[:password], center_id: params[:center_id])
-    if usr
+    usr.update(user_name: params[:name], user_password: params[:password], user_password_confirmation: params[:confirm_password], center_id: params[:center_id])
+    msg = usr.errors.messages
+    msg.each do |errmsg, errmsg_value|
+      errmsg_value.each do |display|
+        @view_err_message << display
+      end
+    end
+    if @view_err_message != []
+      @center_list = Center.all.map{|center| [center.name, center.id]}
+      @edit_user = {id: params[:id], name: params[:name], password: params[:password], centr_id: params[:center_id] }
+      render action: 'edit' and return
+    else
       flash[:notice] = 'Пользователь успешно изменен'
       redirect_to controller: :users, action: :index
-    else
-      flash.now[:alert] = 'что то пошло не так пробуем еще раз'
-      render action: 'update' and return
     end
   end
 
