@@ -39,15 +39,6 @@ class UsersController < ApplicationController
   end
 
   def update
-=begin
-    if params[:password] == params[:confirm_password]
-      params[:password]
-    else
-      flash.now[:alert] = 'Пароли не совпадают'
-      @center_list = Center.all.map{|center| [center.name, center.id]}
-      render action: 'new' and return
-    end
-=end
     @view_err_message = []
     usr = User.find_by(id: params[:id])
     usr.update(user_name: params[:name], user_password: params[:password], user_password_confirmation: params[:confirm_password], center_id: params[:center_id])
