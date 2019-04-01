@@ -1,13 +1,5 @@
 <% provide(:title, 'Edit User') %>
 
-<ul>
-  <% @view_err_message.each do |msg|%>
-      <li>
-        <%= msg %>
-      </li>
-  <%end%>
-</ul>
-
 <h1>Редактирование пользователя</h1>
 <p>
     <%= form_tag(user_path(id: @edit_user[:id]), {name: 'user_edit_form', id: 'user_edit_form', method: :put}) do %>

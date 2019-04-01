@@ -10,8 +10,15 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
+    <% flash.each do |name, messages| %>
+      <%= content_tag :div, class: name do %>
+      <% messages = Array(messages) %>
+        <ul>
+          <% messages.each do |message| %>
+            <%= content_tag :li, message %>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
     <%= yield %>
   </body>
