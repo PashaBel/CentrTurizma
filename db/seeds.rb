@@ -13,8 +13,10 @@ j = 0
 n = 0
 #filename = '/Volumes/Data/Work/insert_db/CITY.csv'
 filename = '/home/pbelevich/Desktop/CITY.csv'
+filecenters = '/home/pbelevich/Desktop/Centers.csv'
 
 filearray = CSV.foreach(filename, headers: true).map(&:to_h)
+filecentersarray = CSV.foreach(filecenters, headers: true).map(&:to_h)
 
 tips = filearray.map{ |tiplist| tiplist['TIP'].gsub('.', '') }.uniq
 tips.each { |tip| LocalityType.create!(short_name: tip) }
@@ -42,3 +44,5 @@ Center.create(name: 'Гродненский', district_id: '1', locality_id: '1'
 
 User.create(user_name: 'BelPaK', user_password: '123', center_id: 1, is_admin: 1)
 User.create(user_name: 'Alex', user_password: '321', center_id: 1, is_admin: 1)
+
+centrhash = filecentersarray.map{ |centerlist|  }

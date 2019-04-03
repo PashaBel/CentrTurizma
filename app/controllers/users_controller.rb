@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     if err_messages.any?
       @center_list = Center.all.map { |center| [center.name, center.id] }
       @edit_user = {id: params[:id], name: params[:name], password: params[:password], centr_id: params[:center_id] }
-      flash.now[:error] = err_messages
+        flash.now[:error] = err_messages
       render action: 'edit'
     else
       redirect_to controller: :users, action: :index
