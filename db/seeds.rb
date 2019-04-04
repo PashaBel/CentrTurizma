@@ -40,9 +40,13 @@ oblhash.each do |oblnm, oblnm_value|
   end
 end
 
-Center.create(name: 'Гродненский', district_id: '1', locality_id: '1', email: 'mail@mail.mail')
-
 User.create(user_name: 'BelPaK', user_password: '123', center_id: 1, is_admin: 1)
 User.create(user_name: 'Alex', user_password: '321', center_id: 1, is_admin: 1)
 
-centrhash = filecentersarray.map{ |centerlist|  }
+filecentersarray.each do |elem|
+  distrid = District.find_by(name: elem['rayon'])
+  loc = elem['locality_centr_tur']||elem['locality_otd_obr']
+  locid = Locality.find_by(name: loc)
+  centrname = elem['name_centr_tur']||elem['name_otd_obr']
+  Center.create(name: centrname, district_id: distrid, locality_id: locid, email: '')
+end

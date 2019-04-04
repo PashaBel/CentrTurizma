@@ -12,26 +12,6 @@ class AuthorizationController < ApplicationController
   #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
   #   Character.create(name: 'Luke', movie: movies.first)
 
-  require 'csv'
-
-
-   filecenters = '/home/pbelevich/Desktop/Centers.csv'
-
-  filecentersarray = CSV.foreach(filecenters, headers: true).map(&:to_h)
-
-  filecentersarray.each do |elem|
-    center = elem['rayon']
-    var
-  end
-
-  Center.create(name: 'Гродненский', district_id: '1', locality_id: '1', email: 'mail@mail.mail')
-
-  User.create(user_name: 'BelPaK', user_password: '123', center_id: 1, is_admin: 1)
-  User.create(user_name: 'Alex', user_password: '321', center_id: 1, is_admin: 1)
-
-
-
-
   def index
     reset_session
   end
