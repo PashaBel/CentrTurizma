@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_03_19_191328) do
 
   create_table "centers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 50, null: false
+    t.string "name", limit: 150, null: false
     t.integer "district_id", null: false
     t.integer "locality_id", null: false
     t.string "email", limit: 50, null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_191328) do
   create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "region_id", null: false
     t.string "name", limit: 20, null: false
-    t.index ["name"], name: "index_districts_on_name", unique: true
+    t.index ["name", "region_id"], name: "index_districts_on_name_and_region_id", unique: true
   end
 
   create_table "institutions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
