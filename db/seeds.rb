@@ -10,7 +10,7 @@ require 'csv'
 
 #filename = '/Volumes/Data/Work/insert_db/CITY.csv'
 filename = 'db/CITY.csv'
-filecenters = '/home/pbelevich/Desktop/Centers.csv'
+filecenters = 'db/Centers.csv'
 
 filearray = CSV.foreach(filename, headers: true).map(&:to_h)
 filecentersarray = CSV.foreach(filecenters, headers: true).map(&:to_h)
