@@ -8,7 +8,6 @@
 
 require 'csv'
 
-#filename = '/Volumes/Data/Work/insert_db/CITY.csv'
 filename = 'db/CITY.csv'
 filecenters = 'db/Centers.csv'
 
@@ -33,11 +32,6 @@ oblhash.each do |oblnm, oblnm_value|
     end
   end
 end
-=begin
-regiongrodn = Region.find_by(name: 'ГРОДНЕНСКАЯ ОБЛАСТЬ')
-District.create(region_id: regiongrodn.id, name: 'Ленинский')
-District.create(region_id: regiongrodn.id, name: 'Октябрьский')
-=end
 
 filecentersarray.each do |elem|
   distrid = District.find_by(name: elem['rayon'])
@@ -46,14 +40,6 @@ filecentersarray.each do |elem|
   centrname = elem['name_centr_tur']||elem['name_otd_obr']
   Center.create(name: centrname, district_id: distrid.id, locality_id: locid.id, email: 'mail@mail.mail')
 end
-
-=begin
-locid = Locality.find_by(name: 'Гродно', district_id: District.find_by(name: 'Гродненский'))
-lenin = District.find_by(name: 'Ленинский', region_id: regiongrodn.id)
-Center.create(name: 'Отдел образования спорта и туризма администрации Ленинского района', district_id: lenin.id, locality_id: locid.id, email: 'mail@mail.mail')
-oktybr = District.find_by(name: 'Октябрьский', region_id: regiongrodn.id)
-Center.create(name: 'Отдел образования спорта и туризма администрации Октябрьского района', district_id: oktybr.id, locality_id: locid.id, email: 'mail@mail.mail')
-=end
 
 User.create(user_name: 'BelPaK', user_password: '123', center_id: 1, is_admin: 1)
 User.create(user_name: 'Alex', user_password: '321', center_id: 1, is_admin: 1)
