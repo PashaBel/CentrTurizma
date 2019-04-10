@@ -1,7 +1,8 @@
 class CreateTableCenters < ActiveRecord::Migration[5.2]
   def self.up
     create_table :centers do |t|
-      t.string :name, :limit => 150, null: false, index: { unique: true }
+      t.string :shortname, :limit => 50, null: false, index: { unique: true }
+      t.string :fullname, :limiit => 200
       t.integer :district_id, null: false
       t.integer :locality_id, null: false
       t.string :email, :limit => 50, null: false
