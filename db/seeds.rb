@@ -27,6 +27,17 @@ oblhash.each do |oblnm, oblnm_value|
   rayonname.each do |raynm, raynm_value|
     districtid = District.create(region_id: regionid.id, name: raynm)
 
+      centrrayon = filecentersarray.group_by { |cr| cr['rayon'] }
+      if raynm == centrrayon['rayon'] && oblnm == 'ГРОДНЕНСКАЯ ОБЛАСТЬ'
+        centrrayon.each do
+          if centrrayon['centr_true'] == 1
+            Center.create(name: centrname, district_id: distrid.id, locality_id: locid.id, email: 'mail@mail.mail')
+          else
+
+          end
+        end
+      end
+
     raynm_value.each do |nasnm|
       Locality.create(district_id: districtid.id, name: nasnm['NAME'], locality_type_id: typehash[nasnm['TIP']])
     end

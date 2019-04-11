@@ -13,11 +13,12 @@
 ActiveRecord::Schema.define(version: 2019_03_19_191328) do
 
   create_table "centers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 150, null: false
+    t.string "shortname", limit: 50, null: false
+    t.string "fullname"
     t.integer "district_id", null: false
     t.integer "locality_id", null: false
     t.string "email", limit: 50, null: false
-    t.index ["name"], name: "index_centers_on_name", unique: true
+    t.index ["shortname"], name: "index_centers_on_shortname", unique: true
   end
 
   create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -27,12 +28,13 @@ ActiveRecord::Schema.define(version: 2019_03_19_191328) do
   end
 
   create_table "institutions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 50, null: false
+    t.string "shortname", limit: 50, null: false
+    t.string "fullname"
     t.string "email", limit: 30, null: false
     t.integer "center_id", null: false
     t.integer "locality_id", null: false
     t.index ["email"], name: "index_institutions_on_email", unique: true
-    t.index ["name"], name: "index_institutions_on_name", unique: true
+    t.index ["shortname"], name: "index_institutions_on_shortname", unique: true
   end
 
   create_table "localities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -53,12 +55,12 @@ ActiveRecord::Schema.define(version: 2019_03_19_191328) do
   end
 
   create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 20, null: false
-    t.text "description"
+    t.string "shortname", limit: 20, null: false
+    t.string "fullname"
     t.integer "point_type_id", null: false
     t.integer "district_id", null: false
     t.integer "locality_id", null: false
-    t.index ["name"], name: "index_points_on_name", unique: true
+    t.index ["shortname"], name: "index_points_on_shortname", unique: true
   end
 
   create_table "regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
