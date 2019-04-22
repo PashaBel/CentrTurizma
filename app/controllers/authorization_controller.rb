@@ -52,11 +52,11 @@ class AuthorizationController < ApplicationController
 
         centrrayon = filecentersarray.group_by { |cr| cr['rayon'] }
         centrrayon.each do |guorn, guorn_value|
-        if raynm == guorn && oblnm == 'ГРОДНЕНСКАЯ ОБЛАСТЬ'
+          if raynm == guorn && oblnm == 'ГРОДНЕНСКАЯ ОБЛАСТЬ'
             if guorn_value['centr_true'] == 1
-              Center.create(name: centrname, district_id: distrid.id, locality_id: locid.id, email: 'mail@mail.mail')
+              Center.create(name: guorn_value['name_guo'], district_id: districtid.id, email: 'mail@mail.mail')
             else
-
+              Institution.create()
             end
           end
         end

@@ -5,7 +5,6 @@ class CreateTableInstitutions < ActiveRecord::Migration[5.2]
       t.string :fullname, :limiit => 200
       t.string :email, :limit => 30, null: false, index: { unique: true }
       t.integer :center_id, null: false
-      t.integer :locality_id, null: false
     end
   end
   def self.down
