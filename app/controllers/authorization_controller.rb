@@ -56,7 +56,7 @@ class AuthorizationController < ApplicationController
             if guorn_value['centr_true'] == 1
               Center.create(name: centrname, district_id: distrid.id, locality_id: locid.id, email: 'mail@mail.mail')
             else
-
+              Institution.create()
             end
           end
         end
