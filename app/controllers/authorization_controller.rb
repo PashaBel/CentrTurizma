@@ -54,9 +54,9 @@ class AuthorizationController < ApplicationController
         centrrayon.each do |guorn, guorn_value|
         if raynm == guorn && oblnm == 'ГРОДНЕНСКАЯ ОБЛАСТЬ'
             if guorn_value['centr_true'] == 1
-              Center.create(name: guorn_value['name_guo'], district_id: districtid.id, email: 'mail@mail.mail')
+              centerid = Center.create(shortname: guorn_value['short_name_guo'], fullname: guorn_value['name_guo'], district_id: districtid.id, email: 'mail@mail.mail')
             else
-              Institution.create()
+              Institution.create(shortname: guorn_value['short_name_guo'], fullname: guorn_value['name_guo'], center_id: centerid.id, email: 'mail@mail.mail')
             end
           end
         end
@@ -67,13 +67,15 @@ class AuthorizationController < ApplicationController
       end
     end
 
+=begin
     filecentersarray.each do |elem|
       distrid = District.find_by(name: elem['rayon'])
       loc = elem['locality_centr_tur']||elem['locality_otd_obr']
       locid = Locality.find_by(name: loc, district_id: distrid.id)
       centrname = elem['name_centr_tur']||elem['name_otd_obr']
-      Center.create(name: centrname, district_id: distrid.id, locality_id: locid.id, email: 'mail@mail.mail')
+      Center.create(fullname: centrname, district_id: distrid.id, email: 'mail@mail.mail')
     end
+=end
 
     User.create(user_name: 'BelPaK', user_password: '123', center_id: 1, is_admin: 1)
     User.create(user_name: 'Alex', user_password: '321', center_id: 1, is_admin: 1)
