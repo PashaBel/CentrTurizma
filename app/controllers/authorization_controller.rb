@@ -54,9 +54,9 @@ class AuthorizationController < ApplicationController
         centrrayon.each do |guorn, guorn_value|
           if raynm == guorn && oblnm == 'ГРОДНЕНСКАЯ ОБЛАСТЬ'
             if guorn_value['centr_true'] == 1
-              Center.create(name: guorn_value['name_guo'], district_id: districtid.id, email: 'mail@mail.mail')
+              centerid = Center.create(shortname:  guorn_value['short_name_guo'], fullname: guorn_value['name_guo'], district_id: districtid.id, email: 'mail@mail.mail')
             else
-              Institution.create()
+              Institution.create(shortname:  guorn_value['short_name_guo'], fullname: guorn_value['name_guo'], center_id: centerid.id, email: 'mail@mail.mail')
             end
           end
         end
